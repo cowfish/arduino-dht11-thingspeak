@@ -1,8 +1,8 @@
 /*
 
 Sketch to submit readings from an Arduino Ethernet to ThingSpeak
-Billy Abbott - billy@cowfish.org.uk
-http://cowfish.org.uk
+Billy Abbott - billy@billyabbott.co.uk
+http://billyabbott.co.uk
 
 */
 
@@ -11,8 +11,7 @@ http://cowfish.org.uk
 #include <dht.h>
 
 // MAC address for the Arduino
-byte mac[] = { 
-  0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 
 void setup() {
   Serial.begin(9600);
@@ -33,7 +32,7 @@ int humidity=0;
 
 // ThingSpeak data
 char server[]  = "api.thingspeak.com";      // IP Address for the ThingSpeak API
-String apiKey = "ENTER YOUR API KEY HERE";    // Write API Key for a ThingSpeak Channel
+String apiKey = "ENTER YOUR API KEY HERE";  // Write API Key for a ThingSpeak Channel
 
 // Check variables
 long lastCheck=0;
@@ -71,7 +70,7 @@ void loop() {
       client.println("X-THINGSPEAKAPIKEY: "+apiKey);
       client.println("Content-Type: application/x-www-form-urlencoded");
       client.print("Content-Length: ");
-      client.println(tempData.length()+humData.length()+1);
+      client.println(tempData.length()+humData.length()+1); // need to include the & seperator
       client.println("");
       
       client.print(tempData);
